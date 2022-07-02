@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 
 
 const Blog = require('./model/blog.js')
+require('dotenv').config()
 
 const port = process.env.PORT || 3000;
 
@@ -15,9 +16,7 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
-const dbURI = 'mongodb+srv://aravindpk:test123@cluster0.6cobp.mongodb.net/cms?retryWrites=true&w=majority';
-
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
 
         app.listen(port);
